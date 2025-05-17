@@ -8,8 +8,8 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
             width: 100%;
+            height: 100%;
             overflow: hidden;
         }
         body {
@@ -19,28 +19,62 @@
             background-color: #000;
         }
         .video-container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         iframe {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             border: none;
-            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
     <div class="video-container">
-        <iframe id="drive-video" loading="eager" allowfullscreen allow="autoplay; fullscreen"></iframe>
+        <iframe id="drive-video" loading="eager" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const iframe = document.getElementById("drive-video");
             iframe.src = "https://drive.google.com/file/d/1IqnRndXn6L_oo5j4yf1uY8aD7uDkQbsb/preview";
+            
+            // Request fullscreen when user interacts with the page
+            document.addEventListener('click', function() {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    iframe.msRequestFullscreen();
+                }
+            }, { once: true });
+            
+            // For mobile devices, try to go fullscreen on load
+            window.addEventListener('load', function() {
+                // Set timeout to ensure everything is loaded
+                setTimeout(function() {
+                    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|Mobile/i)) {
+                        try {
+                            if (document.documentElement.requestFullscreen) {
+                                document.documentElement.requestFullscreen();
+                            } else if (document.documentElement.webkitRequestFullscreen) {
+                                document.documentElement.webkitRequestFullscreen();
+                            } else if (document.documentElement.msRequestFullscreen) {
+                                document.documentElement.msRequestFullscreen();
+                            }
+                        } catch(e) {
+                            console.log("Fullscreen request failed:", e);
+                        }
+                    }
+                }, 1000);
+            });
         });
     </script>
 </body>
