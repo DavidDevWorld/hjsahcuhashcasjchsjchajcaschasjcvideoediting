@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faceless YouTube Channel Course</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #641B2E;
+            --secondary-color: #1e88e5;
+            --dark-color: #333333;
+            --light-color: #f9f9f9;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ff7b7b 100%);
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 100px auto;
+            /*padding: px;*/
+            /*background: white;*/
+            /*border-radius: var(--border-radius);*/
+            /*box-shadow: var(--shadow);*/
+        }
+
+        .course-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .course-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .course-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #555;
+            text-align: center;
+            font-weight: 400;
+            padding: 0 10px;
+        }
+
+        .lesson-section {
+            margin-top: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            color: var(--dark-color);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 16px 20px;
+            margin: 12px 0;
+            font-size: 1rem;
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+        }
+
+        .btn i {
+            font-size: 1.4rem;
+            margin-right: 15px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .youtube-btn {
+            background: var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .youtube-btn:hover {
+            background: #e53935;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .creator-info {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .creator-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .progress-container {
+            margin: 30px 0;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            position: relative;
+            height: 10px;
+            width: 100%;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 10px;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .complete-text {
+            position: absolute;
+            right: 0;
+            top: -25px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .course-title {
+                font-size: 1.8rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 15px;
+            }
+            
+            .header {
+                border-radius: 0;
+            }
+            
+            .course-title {
+                font-size: 1.5rem;
+            }
+            
+            .lesson-number {
+                display: none;
+            }
+        }
+        
+        /* Animation for buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+<!--     <div class="header">
+        <h1>Faceless YouTube Academy</h1>
+    </div>
+     -->
+    <div class="container">
+         <!--Course Image Section -->
+        <img src="https://ikskills.com.ng/wp-content/uploads/2025/03/Simple-Neon-Stand-Up-Comedy-Show-Youtube-Thumbnail-3-1024x576.png" alt="SMARTPHONE VIDEO EDITING COURSE" class="course-image">
+        
+        <h1 class="course-title">SMARTPHONE VIDEO EDITING COURSE</h1>
+        <p class="course-subtitle">Transform Your Videos into Professional Masterpieces – Using Just Your Smartphone! Are you ready to turn your smartphone into a powerful video editing tool?</p>
+        
+        <div class="creator-info">
+            <img src="https://ikskiils.com.ng/wp-content/uploads/2025/03/the-best-online-video-editors-for-2025_rjmd.jpg" alt="Lemuel Luka" class="creator-avatar">
+            <h3>Instructor: James Amos</h3>
+            <p>Video Editor & Content Creator</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <span class="complete-text">0% Complete</span>
+        </div>
+        
+        <div class="lesson-section">
+            <h2 class="section-title">Course Lessons</h2>
+            
+            <button class="btn youtube-btn" onclick="https://daviddevworld.github.io/hjsahcuhashcasjchsjchajcaschasjcvideoediting/v1.html', 1)">
+                <i class="fab fa-youtube"></i>
+                <span class="btn-text">Lesson 1: Introduction to Kinemaster </span>
+            </button>
+            
+            <button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/hjsahcuhashcasjchsjchajcaschasjcvideoediting/v2.html', 2)">
+                <i class="fab fa-youtube"></i>
+                <span class="btn-text">Lesson 2: Introduction to xRecorders </span>
+            </button>
+            
+            <button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/hjsahcuhashcasjchsjchajcaschasjcvideoediting/v3.html', 3)">
+                <i class="fab fa-youtube"></i>
+                <span class="btn-text">Lesson 3: Introduction to Power Director</span>
+            </button>
+            
+            <button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/hjsahcuhashcasjchsjchajcaschasjcvideoediting/v4.html', 4)">
+                <i class="fab fa-youtube"></i>
+                <span class="btn-text">Lesson 4: How to Shoot Professional Videos with your Phone</span>
+            </button>
+            
+            <button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/hjsahcuhashcasjchsjchajcaschasjcvideoediting/v5.html', 5)">
+                <i class="fab fa-youtube"></i>
+                <span class="btn-text">Lesson 5: How to Create Video Intros/Outros</span>
+            </button>
+            
+            <!--<button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/JLBCUXjJZBOCSjkcZBcZCJZBXKuicZbFacelessYoutube/YT6.HTML', 6)">-->
+            <!--    <i class="fab fa-youtube"></i>-->
+            <!--    <span class="btn-text">Lesson 6: Creating Viral Thumbnails That Get Clicks</span>-->
+            <!--</button>-->
+            
+            <!--<button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/JLBCUXjJZBOCSjkcZBcZCJZBXKuicZbFacelessYoutube/YT7.HTML', 7)">-->
+            <!--    <i class="fab fa-youtube"></i>-->
+            <!--    <span class="btn-text">Lesson 7: YouTube Monetization Strategies</span>-->
+            <!--</button>-->
+            
+            <!--<button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/JLBCUXjJZBOCSjkcZBcZCJZBXKuicZbFacelessYoutube/YT8.HTML', 8)">-->
+            <!--    <i class="fab fa-youtube"></i>-->
+            <!--    <span class="btn-text">Lesson 8: Building Your Audience Without Showing Your Face</span>-->
+            <!--</button>-->
+            
+            <!--<button class="btn youtube-btn" onclick="openLesson('https://daviddevworld.github.io/JLBCUXjJZBOCSjkcZBcZCJZBXKuicZbFacelessYoutube/YT9.HTML', 9)">-->
+            <!--    <i class="fab fa-youtube"></i>-->
+            <!--    <span class="btn-text">Lesson 9: Advanced YouTube Growth Tactics</span>-->
+            <!--</button>-->
+        </div>
+        
+        <div class="footer">
+            <h1>Visit: https://ikskills.com.ng/ </h1>
+<!--             <p>© 2025 Faceless YouTube Academy with Lemuel Luka</p>
+            <p>For support: support@facelessyoutube.com</p>
+        </div> -->
+    </div>
+
+    <script>
+        // Track progress and viewed lessons
+        let viewedLessons = JSON.parse(localStorage.getItem('viewedLessons')) || [];
+        const totalLessons = 9;
+        
+        // Update progress bar on page load
+        window.onload = function() {
+            updateProgressBar();
+            animateElements();
+        };
+        
+        function openLesson(url, lessonNumber) {
+            // Add lesson to viewed if not already viewed
+            if (!viewedLessons.includes(lessonNumber)) {
+                viewedLessons.push(lessonNumber);
+                localStorage.setItem('viewedLessons', JSON.stringify(viewedLessons));
+                updateProgressBar();
+            }
+            
+            // Open the lesson
+            window.open(url, '_blank');
+        }
+        
+        function updateProgressBar() {
+            const progressPercent = (viewedLessons.length / totalLessons) * 100;
+            document.getElementById('progressBar').style.width = progressPercent + '%';
+            document.querySelector('.complete-text').textContent = Math.round(progressPercent) + '% Complete';
+        }
+        
+        function animateElements() {
+            // Animate progress bar on load
+            setTimeout(() => {
+                updateProgressBar();
+            }, 300);
+            
+            // Add hover effect to buttons with animation
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.animation = 'pulse 1s infinite';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.animation = 'none';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
